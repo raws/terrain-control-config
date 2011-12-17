@@ -10,11 +10,14 @@ randomRotation=True
 dig=True
 tree=False
 branch=False
-rarity=75
-collisionPercentage=25
+rarity=1
+collisionPercentage=100
 spawnElevationMin=0
 spawnElevationMax=64
 spawnInBiome=All
+groupId=WheatiesAltar
+groupFrequencyMax=1
+groupSeperationMin=500
 [DATA]
 0,-1,1:98.1
 0,0,1:98.1
