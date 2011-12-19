@@ -2,7 +2,7 @@
 version=2.0
 spawnOnBlockType=12
 spawnSunlight=True
-spawnDarkness=False
+spawnDarkness=True
 spawnWater=False
 spawnLava=False
 underFill=True
