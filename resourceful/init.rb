@@ -1,6 +1,7 @@
 require "resourceful"
 
 $:.unshift(File.join(File.dirname(__FILE__), "lib"))
+require "resourceful/biomes/island"
 require "resourceful/resources/buildcraft"
 require "resourceful/resources/desertcraft"
 require "resourceful/resources/harvestcraft/bushes"
@@ -90,17 +91,33 @@ end
   # TODO Configure taiga resources
 end
 
+@world.isle :island => "GrassyIsland" do |island|
+  island.tree :frequency => 1, :trees => ["BigTree", 10, "Tree", 100]
+  # TODO Configure grassy island resources
+end
+
+@world.isle :island => "SnowyIsland" do |island|
+  island.ice = true
+  island.temperature = 0.0
+  island.wetness = 0.4
+  island.tree :frequency => 1, :trees => ["BigTree", 10, "Tree", 100]
+  # TODO Configure snowy island resources
+end
+
 @world.border :mushroom_island_shore
 @world.isle :mushroom_island do |shrooms|
   shrooms.border = "MushroomIslandShore"
 end
 
-@world.other :river
-[:ocean, :frozen_ocean].each do |name|
-  @world.other name do |ocean|
-    ocean.isles << "MushroomIsland"
-  end
+@world.other :ocean do |ocean|
+  ocean.isles = %w(GrassyIsland MushroomIsland)
 end
+
+@world.other :frozen_ocean do |ocean|
+  ocean.isles = %w(SnowyIsland MushroomIsland)
+end
+
+@world.other :river
 
 world_path = File.join(File.dirname(__FILE__), "..")
 @world.write(world_path)
