@@ -97,6 +97,7 @@ end
 end
 
 @world.isle :island => "SnowyIsland" do |island|
+  island.color = 0xd4ebef
   island.ice = true
   island.temperature = 0.0
   island.wetness = 0.4
