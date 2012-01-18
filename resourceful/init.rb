@@ -23,6 +23,7 @@ include Resourceful
   world.frozen_rivers = false
   
   world.surface_stone = false
+  world.river_size = 1
 end
 
 @world.biome :desert do |desert|
