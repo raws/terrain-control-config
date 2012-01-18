@@ -1,7 +1,7 @@
 require "resourceful"
 
 $:.unshift(File.join(File.dirname(__FILE__), "lib"))
-require "resourceful/resources/buildcraft/oil"
+require "resourceful/resources/buildcraft"
 require "resourceful/resources/desertcraft"
 require "resourceful/resources/harvestcraft/bushes"
 require "resourceful/resources/harvestcraft/ores"
