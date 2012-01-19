@@ -10,6 +10,7 @@ require "resourceful/resources/harvestcraft/trees"
 require "resourceful/resources/redpower/blocks"
 require "resourceful/resources/redpower/ores"
 require "resourceful/resources/redpower/plants"
+require "resourceful/resources/vanilla"
 require "resourceful/resources/weee_flowers"
 include Resourceful
 
@@ -110,12 +111,36 @@ end
   shrooms.border = "MushroomIslandShore"
 end
 
+@world.border :shore => "CidsaIslandShore" do |shore|
+  shore.color = 0x4f59b9
+  shore.size = 4
+  shore.rarity = 100
+  shore.clear_resources!
+  [:stone, :grass, :dirt, :sand, :gravel, :wood, :leaves].each do |block|
+    shore.replace block, :with => :glass
+  end
+end
+
+@world.isle :island => "CidsaIsland" do |island|
+  island.color = 0xff4dba
+  island.size = 6
+  island.rarity = 50
+  island.height = 0.6
+  island.volatility = 0.1
+  island.border = "CidsaIslandShore"
+  island.clear_resources!
+  island.tree :frequency => 3, :trees => ["BigTree", 10, "Tree", 100]
+  [:stone, :grass, :dirt, :sand, :gravel, :wood, :leaves].each do |block|
+    island.replace block, :with => :glass
+  end
+end
+
 @world.other :ocean do |ocean|
-  ocean.isles = %w(GrassyIsland MushroomIsland)
+  ocean.isles = %w(CidsaIsland GrassyIsland MushroomIsland)
 end
 
 @world.other :frozen_ocean do |ocean|
-  ocean.isles = %w(SnowyIsland MushroomIsland)
+  ocean.isles = %w(CidsaIsland SnowyIsland MushroomIsland)
 end
 
 @world.other :river
