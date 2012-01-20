@@ -2,7 +2,7 @@ module Resourceful
   class Island < Biome
     self.color = 0x41ae24
     
-    self.size = 6
+    self.size = 4
     self.rarity = 90
     
     self.height = 0.2
