@@ -71,14 +71,22 @@ end
   flats.height = 0.0
   flats.volatility = 0.0
   flats.clear_resources!
+  flats.grass DesertCraft::SmallDeadShrub, :frequency => 1, :rarity => 1, :in => :sand
+end
+
+def redwood_grove(biome)
+  biome.size = 5
+  biome.rarity = 400
+  biome.color = 0x753e3e
+  biome.clear_resources! :tree
+  biome.tree :frequency => 5, :trees => ["Forest", 10, "Tree", 50]
+  biome.clear_resources! :plant
+  biome.plant :rose, :frequency => 25, :rarity => 85, :in => :grass
+  biome.plant WeeeFlowers::MagentaWildflower, :frequency => 10, :rarity => 50, :in => :grass
 end
 
 @world.isle :forest => "ForestRedwoodGrove" do |grove|
-  grove.size = 5
-  grove.rarity = 400
-  grove.color = 0x753e3e
-  grove.clear_resources! :tree
-  grove.tree :frequency => 5, :trees => ["Forest", 10, "Tree", 50]
+  redwood_grove(grove)
 end
 
 @world.biome :forest do |forest|
@@ -112,9 +120,7 @@ end
 end
 
 @world.isle :taiga => "TaigaRedwoodGrove" do |grove|
-  grove.size = 5
-  grove.rarity = 400
-  grove.color = 0x753e3e
+  redwood_grove(grove)
   grove.clear_resources! :tree
   grove.tree :frequency => 5, :trees => ["Taiga1", 10, "Taiga2", 50]
 end
