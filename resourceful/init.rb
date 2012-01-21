@@ -18,7 +18,7 @@ include Resourceful
   world.iterations = 10
   world.rarity_scale = 500
   world.land_size = 1
-  world.land_rarity = 99
+  world.land_rarity = 100
   world.land_fuzzy = 3
   
   world.ice_size = 2
@@ -88,7 +88,7 @@ end
 
 @world.biome :forest => "BirchForest" do |forest|
   forest.size = 2
-  forest.rarity = 500
+  forest.rarity = 200
   forest.volatility = 0.1
   forest.isles << "ForestRedwoodGrove"
   forest.replace :wood, :with => :birch_wood
@@ -137,6 +137,19 @@ end
   # TODO Configure generic ice mountain resources
 end
 
+@world.isle :plains => "WildHills" do |hills|
+  hills.size = 5
+  hills.rarity = 450
+  hills.color = 0x27ab37
+  hills.height = 0.6
+  hills.volatility = 1.8
+  hills.temperature = 0.6
+  hills.wetness = 0.5
+  hills.ponds = true
+  hills.rivers = true
+  hills.tree :frequency => 1, :trees => ["Forest", 33, "BigTree", 15, "Tree", 66]
+end
+
 @world.biome :plains => "HappyHills" do |hills|
   hills.size = 2
   hills.rarity = 500
@@ -146,6 +159,7 @@ end
   hills.wetness = 0.5
   hills.ponds = true
   hills.rivers = true
+  hills.isles << "WildHills"
   hills.tree :frequency => 1, :trees => ["Forest", 33, "BigTree", 15, "Tree", 66]
 end
 
