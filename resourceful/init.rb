@@ -211,6 +211,21 @@ end
   # TODO Configure ice plains resources
 end
 
+@world.biome :plains => "Savannah" do |savannah|
+  savannah.size = 2
+  savannah.rarity = 250
+  savannah.color = 0xc4a64a
+  savannah.temperature = 1.0
+  savannah.wetness = 0.0
+  savannah.height = 0.0
+  savannah.volatility = 0.0
+  savannah.rivers = false
+  savannah.clear_resources! :grass
+  savannah.grass :tall_grass, :frequency => 100, :rarity => 100, :in => :grass
+  savannah.clear_resources! :plant
+  # TODO Configure savannah resources
+end
+
 @world.biome :swamp do |swamp|
   swamp.size = 2
   swamp.rarity = 350
