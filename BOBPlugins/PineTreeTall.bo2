@@ -11,7 +11,7 @@ tree=True
 branch=False
 rarity=60
 collisionPercentage=5
-spawnInBiome=Taiga
+spawnInBiome=Taiga,SnowyTaiga
 [DATA]
 0,0,0:17.1
 0,0,-1:17.1
