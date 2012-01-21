@@ -64,6 +64,8 @@ end
   flats.size = 3
   flats.rarity = 200
   flats.color = 0xdbcc9d
+  flats.temperature = 1.0
+  flats.wetness = 0.0
   flats.surface = :sandstone
   flats.ground = :sandstone
   flats.height = 0.0
