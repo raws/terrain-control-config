@@ -3,6 +3,14 @@ module Resourceful
     self.block_id = 17
   end
   
+  class PineWood < Wood
+    self.block_data = 1
+  end
+  
+  class BirchWood < Wood
+    self.block_data = 2
+  end
+  
   class Leaves < Resource
     self.block_id = 18
   end

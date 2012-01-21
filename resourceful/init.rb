@@ -18,7 +18,7 @@ include Resourceful
   world.iterations = 10
   world.rarity_scale = 500
   world.land_size = 1
-  world.land_rarity = 100
+  world.land_rarity = 99
   world.land_fuzzy = 3
   
   world.ice_size = 2
@@ -83,6 +83,14 @@ end
   forest.size = 2
   forest.rarity = 500
   forest.isles << "ForestRedwoodGrove"
+  # TODO Configure forest resources
+end
+
+@world.biome :forest => "BirchForest" do |forest|
+  forest.size = 2
+  forest.rarity = 500
+  forest.isles << "ForestRedwoodGrove"
+  forest.replace :wood, :with => :birch_wood
   # TODO Configure forest resources
 end
 
