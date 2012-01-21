@@ -226,6 +226,15 @@ end
   # TODO Configure savannah resources
 end
 
+@world.biome :plains => "Scrubland" do |scrubland|
+  scrubland.size = 2
+  scrubland.rarity = 200
+  scrubland.color = 0x64c58f
+  scrubland.clear_resources! :grass
+  scrubland.clear_resources! :plant
+  # TODO Configure scrubland resources
+end
+
 @world.biome :swamp do |swamp|
   swamp.size = 2
   swamp.rarity = 350
@@ -311,17 +320,17 @@ end
   shore.replace :leaves, :with => :lime_wool
 end
 
-# @world.biome :ocean do |ocean|
-#   ocean.size = 1
-#   ocean.rarity = 15
-#   ocean.isles = %w(CidsaIsland GrassyIsland MushroomIsland WoolIsland)
-# end
-# 
-# @world.biome :frozen_ocean do |ocean|
-#   ocean.size = 1
-#   ocean.rarity = 15
-#   ocean.isles = %w(CidsaIsland SnowyIsland MushroomIsland WoolIsland)
-# end
+@world.biome :ocean do |ocean|
+  ocean.size = 1
+  ocean.rarity = 15
+  ocean.isles = %w(CidsaIsland GrassyIsland MushroomIsland WoolIsland)
+end
+
+@world.biome :frozen_ocean do |ocean|
+  ocean.size = 1
+  ocean.rarity = 15
+  ocean.isles = %w(CidsaIsland SnowyIsland MushroomIsland WoolIsland)
+end
 
 @world.other :river
 
