@@ -11,6 +11,10 @@ module Resourceful
     self.block_id = 20
   end
   
+  class Sandstone < Resource
+    self.block_id = 24
+  end
+  
   class Wool < Resource
     self.block_id = 35
   end

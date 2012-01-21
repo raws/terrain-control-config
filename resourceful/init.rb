@@ -18,7 +18,7 @@ include Resourceful
   world.iterations = 10
   world.rarity_scale = 500
   world.land_size = 1
-  world.land_rarity = 99
+  world.land_rarity = 100
   world.land_fuzzy = 3
   
   world.ice_size = 2
@@ -58,6 +58,17 @@ end
   desert.grass DesertCraft::LargeDeadShrub, :frequency => 2, :rarity => 5, :in => :sand
   desert.grass DesertCraft::SmallDeadShrub, :frequency => 2, :rarity => 5, :in => :sand
   # TODO Configure desert resources
+end
+
+@world.biome :desert => "SandstoneFlats" do |flats|
+  flats.size = 3
+  flats.rarity = 200
+  flats.color = 0xdbcc9d
+  flats.surface = :sandstone
+  flats.ground = :sandstone
+  flats.height = 0.0
+  flats.volatility = 0.0
+  flats.clear_resources!
 end
 
 @world.isle :forest => "ForestRedwoodGrove" do |grove|
