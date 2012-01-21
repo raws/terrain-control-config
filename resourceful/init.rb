@@ -137,6 +137,18 @@ end
   # TODO Configure generic ice mountain resources
 end
 
+@world.biome :plains => "HappyHills" do |hills|
+  hills.size = 2
+  hills.rarity = 500
+  hills.height = 0.2
+  hills.volatility = 0.2
+  hills.temperature = 0.6
+  hills.wetness = 0.5
+  hills.ponds = true
+  hills.rivers = true
+  hills.tree :frequency => 1, :trees => ["Forest", 33, "BigTree", 15, "Tree", 66]
+end
+
 @world.biome :plains do |plains|
   plains.size = 1
   plains.rarity = 500
