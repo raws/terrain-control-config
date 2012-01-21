@@ -29,16 +29,65 @@ include Resourceful
   world.river_size = 1
 end
 
+@world.isle :desert => "DesertOasis" do |oasis|
+  oasis.size = 8
+  oasis.rarity = 300
+  oasis.color = 0x83cd0f
+  oasis.temperature = 0.7
+  oasis.wetness = 0.7
+  oasis.ponds = true
+  oasis.height = -0.2
+  oasis.replacements = []
+  oasis.clear_resources! :grass
+  oasis.grass DesertCraft::RoundGreenRedCactus, :frequency => 2, :rarity => 50, :in => :sand
+  oasis.grass DesertCraft::RoundPinkFlowerCactus, :frequency => 2, :rarity => 50, :in => :sand
+  oasis.grass DesertCraft::GnarlyPinkFlowerCactus, :frequency => 2, :rarity => 50, :in => :sand
+  oasis.grass DesertCraft::LargeDeadShrub, :frequency => 2, :rarity => 50, :in => :sand
+  # TODO Configure desert oasis resources
+end
+
 @world.biome :desert do |desert|
   desert.size = 1
   desert.rarity = 500
+  desert.isles << "DesertOasis"
+  desert.clear_resources! :grass
+  desert.grass :dead_bush, :frequency => 4, :rarity => 5, :in => :sand
+  desert.grass DesertCraft::GnarlyBrownCactus, :frequency => 1, :rarity => 3, :in => :sand
+  desert.grass DesertCraft::RoundBrownCactus, :frequency => 1, :rarity => 3, :in => :sand
+  desert.grass DesertCraft::RoundFadedPinkFlowerCactus, :frequency => 1, :rarity => 1, :in => :sand
+  desert.grass DesertCraft::LargeDeadShrub, :frequency => 2, :rarity => 5, :in => :sand
+  desert.grass DesertCraft::SmallDeadShrub, :frequency => 2, :rarity => 5, :in => :sand
   # TODO Configure desert resources
+end
+
+@world.isle :forest => "ForestRedwoodGrove" do |grove|
+  grove.size = 5
+  grove.rarity = 400
+  grove.color = 0x753e3e
+  grove.clear_resources! :tree
+  grove.tree :frequency => 5, :trees => ["Forest", 10, "Tree", 50]
 end
 
 @world.biome :forest do |forest|
   forest.size = 2
   forest.rarity = 500
+  forest.isles << "ForestRedwoodGrove"
   # TODO Configure forest resources
+end
+
+@world.isle :taiga => "TaigaRedwoodGrove" do |grove|
+  grove.size = 5
+  grove.rarity = 400
+  grove.color = 0x753e3e
+  grove.clear_resources! :tree
+  grove.tree :frequency => 5, :trees => ["Taiga1", 10, "Taiga2", 50]
+end
+
+@world.biome :taiga do |taiga|
+  taiga.size = 2
+  taiga.rarity = 350
+  taiga.isles << "TaigaRedwoodGrove"
+  # TODO Configure taiga resources
 end
 
 @world.biome :mountains do |mountains|
@@ -98,21 +147,15 @@ end
   # TODO Configure swamp resources
 end
 
-@world.biome :taiga do |taiga|
-  taiga.size = 2
-  taiga.rarity = 350
-  # TODO Configure taiga resources
-end
-
 @world.isle :island => "GrassyIsland" do |island|
-  island.rarity = 500
+  island.rarity = 200
   island.tree :frequency => 1, :trees => ["BigTree", 10, "Tree", 100]
   # TODO Configure grassy island resources
 end
 
 @world.isle :island => "SnowyIsland" do |island|
   island.color = 0xd4ebef
-  island.rarity = 500
+  island.rarity = 200
   island.ice = true
   island.temperature = 0.0
   island.wetness = 0.4
@@ -131,7 +174,6 @@ end
   island.color = 0xff4dba
   island.rarity = 10
   island.size = 4
-  island.rarity = 50
   island.height = 0.6
   island.volatility = 0.1
   island.border = "CidsaIslandShore"
@@ -152,9 +194,8 @@ end
 
 @world.isle :island => "WoolIsland" do |island|
   island.color = 0xe9a625
-  island.rarity = 1
-  island.size = 4
   island.rarity = 10
+  island.size = 4
   island.height = 0.6
   island.volatility = 0.1
   island.border = "WoolIslandShore"
@@ -185,17 +226,17 @@ end
   shore.replace :leaves, :with => :lime_wool
 end
 
-@world.biome :ocean do |ocean|
-  ocean.size = 0
-  ocean.rarity = 25
-  ocean.isles = %w(CidsaIsland GrassyIsland MushroomIsland WoolIsland)
-end
-
-@world.biome :frozen_ocean do |ocean|
-  ocean.size = 0
-  ocean.rarity = 25
-  ocean.isles = %w(CidsaIsland SnowyIsland MushroomIsland WoolIsland)
-end
+# @world.biome :ocean do |ocean|
+#   ocean.size = 1
+#   ocean.rarity = 15
+#   ocean.isles = %w(CidsaIsland GrassyIsland MushroomIsland WoolIsland)
+# end
+# 
+# @world.biome :frozen_ocean do |ocean|
+#   ocean.size = 1
+#   ocean.rarity = 15
+#   ocean.isles = %w(CidsaIsland SnowyIsland MushroomIsland WoolIsland)
+# end
 
 @world.other :river
 
