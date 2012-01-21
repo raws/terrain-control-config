@@ -18,7 +18,7 @@ include Resourceful
   world.iterations = 10
   world.rarity_scale = 500
   world.land_size = 1
-  world.land_rarity = 100
+  world.land_rarity = 99
   world.land_fuzzy = 3
   
   world.ice_size = 2
@@ -120,6 +120,16 @@ end
 @world.biome :taiga do |taiga|
   taiga.size = 2
   taiga.rarity = 350
+  taiga.isles << "TaigaRedwoodGrove"
+  # TODO Configure taiga resources
+end
+
+@world.biome :taiga => "SnowyTaiga" do |taiga|
+  taiga.size = 2
+  taiga.rarity = 350
+  taiga.ice = true
+  taiga.temperature = 0.0
+  taiga.wetness = 0.4
   taiga.isles << "TaigaRedwoodGrove"
   # TODO Configure taiga resources
 end
