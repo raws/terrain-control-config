@@ -95,6 +95,20 @@ end
   # TODO Configure forest resources
 end
 
+@world.biome :forest => "Jungle" do |jungle|
+  jungle.size = 2
+  jungle.rarity = 400
+  jungle.color = 0x128107
+  jungle.volatility = 0.5
+  jungle.temperature = 0.8
+  jungle.wetness = 1.0
+  jungle.clear_resources!
+  jungle.tree :frequency => 20, :trees => ["Tree", 10, "SwampTree", 65, "BigTree", 100]
+  jungle.grass :tall_grass, :frequency => 50, :rarity => 100, :in => :grass
+  jungle.grass :fern, :frequency => 50, :rarity => 100, :in => :grass
+  # TODO Configure jungle resources
+end
+
 @world.isle :taiga => "TaigaRedwoodGrove" do |grove|
   grove.size = 5
   grove.rarity = 400
