@@ -89,6 +89,7 @@ end
 @world.biome :forest => "BirchForest" do |forest|
   forest.size = 2
   forest.rarity = 500
+  forest.volatility = 0.1
   forest.isles << "ForestRedwoodGrove"
   forest.replace :wood, :with => :birch_wood
   # TODO Configure forest resources
