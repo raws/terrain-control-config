@@ -6,7 +6,8 @@ spawnDarkness=True
 spawnWater=False
 spawnLava=False
 randomRotation=False
-dig=False
+dig=True
+collisionPercentage=50
 rarity=2
 spawnInBiome=Desert,DesertOasis
 [DATA]
