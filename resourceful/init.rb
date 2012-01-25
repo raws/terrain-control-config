@@ -109,13 +109,17 @@ end
   jungle.size = 2
   jungle.rarity = 400
   jungle.color = 0x128107
-  jungle.volatility = 0.5
+  jungle.volatility = 0.6
   jungle.temperature = 0.8
   jungle.wetness = 1.0
   jungle.clear_resources!
   jungle.tree :frequency => 20, :trees => ["Tree", 10, "SwampTree", 65, "BigTree", 100]
-  jungle.grass :tall_grass, :frequency => 50, :rarity => 100, :in => :grass
-  jungle.grass :fern, :frequency => 50, :rarity => 100, :in => :grass
+  jungle.grass :tall_grass, :frequency => 35, :rarity => 100, :in => :grass
+  jungle.grass :fern, :frequency => 35, :rarity => 100, :in => :grass
+  jungle.grass WeeeFlowers::BrightGreenShrub, :frequency => 35, :rarity => 100, :in => :grass
+  jungle.grass WeeeFlowers::DarkGreenShrub, :frequency => 35, :rarity => 85, :in => :grass
+  jungle.grass WeeeFlowers::MagentaWildflower, :frequency => 5, :rarity => 50, :in => :grass
+  jungle.grass WeeeFlowers::BlueWildflower, :frequency => 5, :rarity => 50, :in => :grass
   # TODO Configure jungle resources
 end
 
