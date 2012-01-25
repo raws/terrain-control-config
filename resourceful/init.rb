@@ -29,6 +29,12 @@ include Resourceful
   world.river_size = 1
 end
 
+def add_common_resources(biome)
+  biome.ore :coal, :size => 20, :frequency => 15, :rarity => 85, :between =>  0..32,  :in => :stone
+  biome.ore :coal, :size => 10, :frequency => 10, :rarity => 65, :between => 32..48,  :in => :stone
+  biome.ore :coal, :size => 8,  :frequency => 5,  :rarity => 50, :between => 48..128, :in => :stone
+end
+
 @world.isle :desert => "DesertOasis" do |oasis|
   oasis.size = 8
   oasis.rarity = 300
@@ -43,7 +49,7 @@ end
   oasis.grass DesertCraft::RoundPinkFlowerCactus, :frequency => 2, :rarity => 50, :in => :sand
   oasis.grass DesertCraft::GnarlyPinkFlowerCactus, :frequency => 2, :rarity => 50, :in => :sand
   oasis.grass DesertCraft::LargeDeadShrub, :frequency => 2, :rarity => 50, :in => :sand
-  # TODO Configure desert oasis resources
+  add_common_resources(oasis)
 end
 
 @world.biome :desert do |desert|
@@ -57,7 +63,7 @@ end
   desert.grass DesertCraft::RoundFadedPinkFlowerCactus, :frequency => 1, :rarity => 1, :in => :sand
   desert.grass DesertCraft::LargeDeadShrub, :frequency => 2, :rarity => 5, :in => :sand
   desert.grass DesertCraft::SmallDeadShrub, :frequency => 2, :rarity => 5, :in => :sand
-  # TODO Configure desert resources
+  add_common_resources(desert)
 end
 
 @world.biome :desert => "SandstoneFlats" do |flats|
@@ -72,6 +78,7 @@ end
   flats.volatility = 0.0
   flats.clear_resources!
   flats.grass DesertCraft::SmallDeadShrub, :frequency => 1, :rarity => 1, :in => :sand
+  add_common_resources(flats)
 end
 
 def redwood_grove(biome)
@@ -83,6 +90,7 @@ def redwood_grove(biome)
   biome.clear_resources! :plant
   biome.plant :rose, :frequency => 25, :rarity => 85, :in => :grass
   biome.plant WeeeFlowers::MagentaWildflower, :frequency => 10, :rarity => 50, :in => :grass
+  add_common_resources(biome)
 end
 
 @world.isle :forest => "ForestRedwoodGrove" do |grove|
@@ -93,7 +101,7 @@ end
   forest.size = 2
   forest.rarity = 500
   forest.isles << "ForestRedwoodGrove"
-  # TODO Configure forest resources
+  add_common_resources(forest)
 end
 
 @world.biome :forest => "BirchForest" do |forest|
@@ -102,7 +110,7 @@ end
   forest.volatility = 0.1
   forest.isles << "ForestRedwoodGrove"
   forest.replace :wood, :with => :birch_wood
-  # TODO Configure forest resources
+  add_common_resources(forest)
 end
 
 @world.biome :forest => "Jungle" do |jungle|
@@ -120,7 +128,7 @@ end
   jungle.grass WeeeFlowers::DarkGreenShrub, :frequency => 35, :rarity => 85, :in => :grass
   jungle.grass WeeeFlowers::MagentaWildflower, :frequency => 5, :rarity => 50, :in => :grass
   jungle.grass WeeeFlowers::BlueWildflower, :frequency => 5, :rarity => 50, :in => :grass
-  # TODO Configure jungle resources
+  add_common_resources(jungle)
 end
 
 @world.isle :taiga => "TaigaRedwoodGrove" do |grove|
@@ -133,7 +141,7 @@ end
   taiga.size = 2
   taiga.rarity = 350
   taiga.isles << "TaigaRedwoodGrove"
-  # TODO Configure taiga resources
+  add_common_resources(taiga)
 end
 
 @world.biome :taiga => "SnowyTaiga" do |taiga|
@@ -143,13 +151,13 @@ end
   taiga.temperature = 0.0
   taiga.wetness = 0.4
   taiga.isles << "TaigaRedwoodGrove"
-  # TODO Configure taiga resources
+  add_common_resources(taiga)
 end
 
 @world.biome :mountains do |mountains|
   mountains.size = 2
   mountains.rarity = 250
-  # TODO Configure generic mountain resources
+  add_common_resources(mountains)
 end
 
 @world.biome :mountains => "WoodedMountains" do |mountains|
@@ -158,7 +166,7 @@ end
   mountains.color = 0x95b95b
   mountains.tree :frequency => 10, :trees => ["Forest", 20, "BigTree", 10, "Tree", 100]
   mountains.grass :tall_grass, :frequency => 15, :rarity => 100, :in => [:grass, :dirt]
-  # TODO Configure generic wooded mountain resources
+  add_common_resources(mountains)
 end
 
 @world.biome :mountains => "SnowyMountains" do |mountains|
@@ -170,7 +178,7 @@ end
   mountains.wetness = 0.5
   mountains.clear_resources! :grass
   mountains.grass :tall_grass, :frequency => 5, :rarity => 50, :in => [:dirt, :grass]
-  # TODO Configure generic ice mountain resources
+  add_common_resources(mountains)
 end
 
 @world.isle :plains => "WildHills" do |hills|
@@ -184,6 +192,7 @@ end
   hills.ponds = true
   hills.rivers = true
   hills.tree :frequency => 1, :trees => ["Forest", 33, "BigTree", 15, "Tree", 66]
+  add_common_resources(hills)
 end
 
 @world.biome :plains => "HappyHills" do |hills|
@@ -197,6 +206,7 @@ end
   hills.rivers = true
   hills.isles << "WildHills"
   hills.tree :frequency => 1, :trees => ["Forest", 33, "BigTree", 15, "Tree", 66]
+  add_common_resources(hills)
 end
 
 @world.biome :plains do |plains|
@@ -205,7 +215,7 @@ end
   plains.height = 0.0
   plains.volatility = 0.0
   plains.rivers = false
-  # TODO Configure plains resources
+  add_common_resources(plains)
 end
 
 @world.biome :plains => "SnowyPlains" do |plains|
@@ -220,7 +230,7 @@ end
   plains.rivers = false
   plains.clear_resources! :grass
   plains.grass :tall_grass, :frequency => 5, :rarity => 50, :in => [:dirt, :grass]
-  # TODO Configure ice plains resources
+  add_common_resources(plains)
 end
 
 @world.biome :plains => "Savannah" do |savannah|
@@ -235,7 +245,7 @@ end
   savannah.clear_resources! :grass
   savannah.grass :tall_grass, :frequency => 100, :rarity => 100, :in => :grass
   savannah.clear_resources! :plant
-  # TODO Configure savannah resources
+  add_common_resources(savannah)
 end
 
 @world.biome :plains => "Scrubland" do |scrubland|
@@ -244,19 +254,19 @@ end
   scrubland.color = 0x64c58f
   scrubland.clear_resources! :grass
   scrubland.clear_resources! :plant
-  # TODO Configure scrubland resources
+  add_common_resources(scrubland)
 end
 
 @world.biome :swamp do |swamp|
   swamp.size = 2
   swamp.rarity = 350
-  # TODO Configure swamp resources
+  add_common_resources(swamp)
 end
 
 @world.isle :island => "GrassyIsland" do |island|
   island.rarity = 200
   island.tree :frequency => 1, :trees => ["BigTree", 10, "Tree", 100]
-  # TODO Configure grassy island resources
+  add_common_resources(island)
 end
 
 @world.isle :island => "SnowyIsland" do |island|
@@ -266,7 +276,7 @@ end
   island.temperature = 0.0
   island.wetness = 0.4
   island.tree :frequency => 1, :trees => ["BigTree", 10, "Tree", 100]
-  # TODO Configure snowy island resources
+  add_common_resources(island)
 end
 
 @world.border :mushroom_island_shore
@@ -274,6 +284,7 @@ end
   shrooms.color = 0xa7744f
   shrooms.rarity = 10
   shrooms.border = "MushroomIslandShore"
+  add_common_resources(shrooms)
 end
 
 @world.isle :island => "CidsaIsland" do |island|
@@ -336,12 +347,14 @@ end
   ocean.size = 1
   ocean.rarity = 15
   ocean.isles = %w(CidsaIsland GrassyIsland MushroomIsland WoolIsland)
+  add_common_resources(ocean)
 end
 
 @world.biome :frozen_ocean do |ocean|
   ocean.size = 1
   ocean.rarity = 15
   ocean.isles = %w(CidsaIsland SnowyIsland MushroomIsland WoolIsland)
+  add_common_resources(ocean)
 end
 
 @world.other :river
