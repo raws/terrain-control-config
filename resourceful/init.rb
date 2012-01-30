@@ -30,9 +30,11 @@ include Resourceful
 end
 
 def add_common_resources(biome)
-  biome.ore :coal, :size => 20, :frequency => 15, :rarity => 85, :between =>  0..32,  :in => :stone
+  biome.ore :coal, :size => 20, :frequency => 5,  :rarity => 33, :between =>  0..32,  :in => :stone
   biome.ore :coal, :size => 10, :frequency => 10, :rarity => 65, :between => 32..48,  :in => :stone
   biome.ore :coal, :size => 8,  :frequency => 5,  :rarity => 50, :between => 48..128, :in => :stone
+  biome.ore :iron, :size => 12, :frequency => 10, :rarity => 65, :between =>  0..48,  :in => :stone
+  biome.ore :iron, :size => 8,  :frequency => 5,  :rarity => 50, :between => 48..128, :in => :stone
 end
 
 @world.isle :desert => "DesertOasis" do |oasis|
