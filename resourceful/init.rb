@@ -45,7 +45,7 @@ end
   world.land_fuzzy = 3
   
   world.ice_size = 2
-  world.ice_rarity = 10
+  world.ice_rarity = 25
   world.frozen_rivers = false
   
   world.surface_stone = false
@@ -99,7 +99,7 @@ def add_resource_range(resource, rarity = 1.0, options = { :sparse => {}, :dense
     
     @world.biome base_biome_name => new_biome_name do |biome|
       biome.size = 6
-      biome.rarity = (50 * rarity).round
+      biome.rarity = (100 * rarity).round
       biome.color = 0xa864a8
 
       # Very rare surface deposits to help explorers
