@@ -45,7 +45,7 @@ end
   world.land_fuzzy = 3
   
   world.ice_size = 2
-  world.ice_rarity = 95
+  world.ice_rarity = 10
   world.frozen_rivers = false
   
   world.surface_stone = false
@@ -242,7 +242,7 @@ end
 
 @world.biome :forest => "Jungle" do |jungle|
   jungle.size = 2
-  jungle.rarity = 400
+  jungle.rarity = 500
   jungle.color = 0x128107
   jungle.volatility = 0.6
   jungle.temperature = 0.8
@@ -295,6 +295,7 @@ end
 end
 
 @world.biome :snowy_mountains do |mountains|
+  mountains.rarity = 50
   add_common_resources(mountains)
 end
 
@@ -350,7 +351,7 @@ end
 
 @world.biome :plains => "SnowyPlains" do |plains|
   plains.size = 2
-  plains.rarity = 500
+  plains.rarity = 50
   plains.color = 0xd3dded
   plains.ice = true
   plains.temperature = 0.0
@@ -428,7 +429,7 @@ end
 def hellify(hell)
   hell.color = 0xf26522
   hell.size = 4
-  hell.rarity = 35
+  hell.rarity = 15
   hell.ground = :netherrack
   hell.surface = :netherrack
   hell.temperature = 1.0
