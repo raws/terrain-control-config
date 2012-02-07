@@ -427,7 +427,7 @@ end
 
 def hellify(hell)
   hell.color = 0xf26522
-  hell.size = 2
+  hell.size = 4
   hell.rarity = 35
   hell.ground = :netherrack
   hell.surface = :netherrack
