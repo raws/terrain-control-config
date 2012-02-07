@@ -7,7 +7,7 @@ module Resourceful
   
   class WoodedMountains < Mountains
     self.color = 0x95b95b
-    tree :frequency => 10, :trees => ["Forest", 20, "BigTree", 10, "Tree", 100]
+    tree :frequency => 5, :trees => ["Forest", 20, "BigTree", 10, "Tree", 85]
     grass :tall_grass, :frequency => 15, :rarity => 100, :in => [:grass, :dirt]
   end
   
@@ -23,7 +23,7 @@ module Resourceful
   end
   
   class WoodedSnowyMountains < SnowyMountains
-    tree :frequency => 10, :trees => ["Forest", 20, "BigTree", 10, "Tree", 100]
+    tree :frequency => 5, :trees => ["Forest", 20, "BigTree", 10, "Tree", 85]
     plant WeeeFlowers::WhiteRose, :frequency => 1, :rarity => 10, :between => 0..128, :in => :grass
     plant WeeeFlowers::GreyPeonie, :frequency => 10, :rarity => 25, :between => 0..128, :in => :grass
   end

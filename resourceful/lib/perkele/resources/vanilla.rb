@@ -23,6 +23,18 @@ module Resourceful
     self.block_id = 24
   end
   
+  class Netherrack < Resource
+    self.block_id = 87
+  end
+  
+  class SoulSand < Resource
+    self.block_id = 88
+  end
+  
+  class Fire < Resource
+    self.block_id = 51
+  end
+  
   class Wool < Resource
     self.block_id = 35
   end

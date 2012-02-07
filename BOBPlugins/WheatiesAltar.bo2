@@ -10,7 +10,7 @@ randomRotation=True
 dig=True
 collisionPercentage=100
 rarity=1
-spawnInBiome=Jungle,Swamp
+spawnInBiome=Jungle,Swamp,HellPlains,HellMountains
 [DATA]
 -2,-1,-2:98.0
 -1,-1,-2:98.0(5),46(1)

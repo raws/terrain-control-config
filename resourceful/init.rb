@@ -45,7 +45,7 @@ end
   world.land_fuzzy = 3
   
   world.ice_size = 2
-  world.ice_rarity = 75
+  world.ice_rarity = 90
   world.frozen_rivers = false
   
   world.surface_stone = false
@@ -93,13 +93,14 @@ def add_resource_range(resource, rarity = 1.0, options = { :sparse => {}, :dense
   sparse_defaults = { :size => 8, :frequency => 20, :rarity => 100, :between => proc { (85..128).random_range(10..43) }, :in => :stone }
   dense_defaults = { :size => 16, :frequency => 20, :rarity => 100, :between => proc { (0..85).random_range(10..85) }, :in => :stone }
   
-  %w(Mountains WoodedMountains SnowyMountains WoodedSnowyMountains).each do |base_biome|
+  %w(Mountains WoodedMountains).each do |base_biome|
     base_biome_name = base_biome.underscore.to_sym
     new_biome_name = base_biome.sub(/Mountains$/, "") << "#{resource_name}Range"
     
     @world.biome base_biome_name => new_biome_name do |biome|
       biome.size = 6
-      biome.rarity = (100 * rarity).round
+      biome.rarity = (50 * rarity).round
+      biome.color = 0xa864a8
 
       # Very rare surface deposits to help explorers
       biome.ore resource, :size => 4, :frequency => 8, :rarity => 85, :between => 64..128, :in => [:dirt, :grass]
@@ -333,7 +334,7 @@ end
 end
 
 @world.biome :plains do |plains|
-  plains.size = 1
+  plains.size = 2
   plains.rarity = 500
   plains.height = 0.0
   plains.volatility = 0.0
@@ -393,9 +394,59 @@ end
   swamp.size = 2
   swamp.rarity = 350
   swamp.ore :clay, :size => 12, :frequency => 10, :rarity => 75, :between => 0..128, :in => :stone
+  swamp.ore :soul_sand, :size => 48, :frequency => 10, :rarity => 50, :between => 0..128, :in => [:dirt, :grass]
   swamp.grass WeeeFlowers::DyingShrub, :frequency => 5, :rarity => 25, :in => :grass
   add_fruit_plants(swamp)
   add_common_resources(swamp)
+end
+
+@world.isle :plains => "HellFireRegion" do |fire|
+  fire.color = 0xd15012
+  fire.size = 6
+  fire.rarity = 250
+  fire.ground = :netherrack
+  fire.surface = :fire
+  fire.temperature = 1.0
+  fire.wetness = 0.0
+  fire.rivers = false
+  fire.ore :stationary_lava, :size => 32, :frequency => 20, :rarity => 100, :between => 0..128, :in => [:stone, :netherrack]
+  fire.replace :stationary_water, :with => :fire
+end
+
+@world.isle :plains => "HellLavaRegion" do |lava|
+  lava.color = 0xd15012
+  lava.size = 6
+  lava.rarity = 250
+  lava.ground = :netherrack
+  lava.surface = :stationary_lava
+  lava.temperature = 1.0
+  lava.wetness = 0.0
+  lava.rivers = false
+  lava.replace :stationary_water, :with => :stationary_lava
+end
+
+def hellify(hell)
+  hell.color = 0xf26522
+  hell.size = 2
+  hell.rarity = 35
+  hell.ground = :netherrack
+  hell.surface = :netherrack
+  hell.temperature = 1.0
+  hell.wetness = 0.0
+  hell.rivers = false
+  hell.isles = %w(HellFireRegion HellLavaRegion)
+  hell.ore :fire, :size => 32, :frequency => 20, :rarity => 100, :between => 0..128, :in => :netherrack
+  hell.ore :stationary_lava, :size => 32, :frequency => 20, :rarity => 100, :between => 0..128, :in => [:stone, :netherrack]
+  hell.grass :dead_bush, :frequency => 3, :rarity => 50, :between => 0..128, :in => :netherrack
+  hell.replace :stationary_water, :with => :fire
+end
+
+@world.biome :plains => "HellPlains" do |hell|
+  hellify(hell)
+end
+
+@world.biome :mountains => "HellMountains" do |hell|
+  hellify(hell)
 end
 
 @world.isle :island => "GrassyIsland" do |island|
@@ -495,7 +546,7 @@ end
 end
 
 @world.biome :frozen_ocean do |ocean|
-  ocean.size = 1
+  ocean.size = 3
   ocean.rarity = 15
   ocean.isles = %w(CidsaIsland SnowyIsland MushroomIsland WoolIsland)
   add_water_resources(ocean)
