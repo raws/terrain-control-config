@@ -369,7 +369,7 @@ end
 
 @world.biome :plains => "Savannah" do |savannah|
   savannah.size = 2
-  savannah.rarity = 250
+  savannah.rarity = 200
   savannah.color = 0xc4a64a
   savannah.temperature = 1.0
   savannah.wetness = 0.0
