@@ -45,7 +45,7 @@ end
   world.land_fuzzy = 3
   
   world.ice_size = 2
-  world.ice_rarity = 90
+  world.ice_rarity = 95
   world.frozen_rivers = false
   
   world.surface_stone = false
