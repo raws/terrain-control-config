@@ -23,6 +23,10 @@ module Resourceful
     self.block_id = 24
   end
   
+  class SugarCane < Resource
+    self.block_id = "SUGAR_CANE_BLOCK"
+  end
+  
   class Netherrack < Resource
     self.block_id = 87
   end

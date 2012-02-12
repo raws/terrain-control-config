@@ -255,6 +255,7 @@ end
   jungle.grass WeeeFlowers::DarkGreenShrub, :frequency => 35, :rarity => 85, :in => :grass
   jungle.grass WeeeFlowers::MagentaWildflower, :frequency => 5, :rarity => 50, :in => :grass
   jungle.grass WeeeFlowers::BlueWildflower, :frequency => 5, :rarity => 50, :in => :grass
+  jungle.reed :sugar_cane, :frequency => 10, :rarity => 100, :between => 0..128, :in => [:grass, :dirt, :sand]
   add_fruit_plants(jungle)
   add_common_resources(jungle)
 end
@@ -397,6 +398,7 @@ end
   swamp.ore :clay, :size => 12, :frequency => 10, :rarity => 75, :between => 0..128, :in => :stone
   swamp.ore :soul_sand, :size => 48, :frequency => 10, :rarity => 50, :between => 0..128, :in => [:dirt, :grass]
   swamp.grass WeeeFlowers::DyingShrub, :frequency => 5, :rarity => 25, :in => :grass
+  swamp.reed :sugar_cane, :frequency => 10, :rarity => 33, :between => 0..128, :in => [:grass, :dirt, :sand]
   add_fruit_plants(swamp)
   add_common_resources(swamp)
 end
@@ -454,6 +456,7 @@ end
   island.rarity = 200
   island.tree :frequency => 1, :trees => ["BigTree", 10, "Tree", 100]
   island.plant RedPower::IndigoPlant, :frequency => 8, :rarity => 100, :between => 0..128, :in => :grass
+  island.reed :sugar_cane, :frequency => 5, :rarity => 75, :between => 0..128, :in => [:grass, :dirt, :sand]
   add_fruit_plants(island, 0.2)
   add_common_resources(island)
 end
@@ -557,6 +560,7 @@ end
 @world.other :river do |river|
   add_water_resources(river)
   add_common_resources(river)
+  river.reed :sugar_cane, :frequency => 5, :rarity => 33, :between => 0..128, :in => [:grass, :dirt, :sand]
 end
 
 world_path = File.join(File.dirname(__FILE__), "..")
