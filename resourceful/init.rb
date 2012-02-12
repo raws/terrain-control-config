@@ -56,9 +56,10 @@ def add_common_resources(biome)
   biome.ore :coal, :size => 20, :frequency => 5,  :rarity => 33, :between =>  0..32,  :in => :stone
   biome.ore :coal, :size => 10, :frequency => 8,  :rarity => 55, :between => 32..48,  :in => :stone
   biome.ore :coal, :size => 8,  :frequency => 5,  :rarity => 50, :between => 48..128, :in => :stone
-  biome.ore :iron, :size => 12, :frequency => 8,  :rarity => 55, :between =>  0..48,  :in => :stone
+  biome.ore :iron, :size => 12, :frequency => 10, :rarity => 65, :between =>  0..48,  :in => :stone
   biome.ore :iron, :size => 8,  :frequency => 5,  :rarity => 50, :between => 48..128, :in => :stone
   biome.ore :clay, :size => 8, :frequency => (5..10).random, :rarity => (35..65).random, :between => (0..128).random_range(35..128), :in => [:stone, :dirt]
+  biome.ore :redstone, :size => 6, :frequency => 3, :rarity => 33, :between => 0..32, :in => :stone
   biome.ore HarvestCraft::Salt, :size => 8, :frequency => 12, :rarity => 33, :between => 0..128, :in => [:stone, :dirt]
   biome.ore RedPower::Basalt, :size => 12, :frequency => 2, :rarity => 40, :between => 0..48, :in => :stone
   biome.ore RedPower::Marble, :size => 12, :frequency => 2, :rarity => 40, :between => 0..64, :in => :stone
